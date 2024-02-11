@@ -15,12 +15,12 @@ for i in range(l):
     type =  dfile.iloc[i]['Group']
     for f in os.listdir(path):
         if f!='SURVEY':
-            newpath = path + '/' +  f
-            for f1 in os.listdir(newpath):
-                newpath2 = newpath + '/' +  f1
-                for f2 in os.listdir(newpath2):
-                    newpath3 = newpath2 + '/' +  f2
-                    for file in os.listdir(newpath3):
+            dir_path1 = path + '/' +  f
+            for f1 in os.listdir(dir_path1):
+                dir_path2 = dir_path1 + '/' +  f1
+                for f2 in os.listdir(dir_path2):
+                    dir_path3 = dir_path2 + '/' +  f2
+                    for file in os.listdir(dir_path3):
                         if(type == 'CN'):
                             CN = CN +1
                         elif(type == 'AD'):
@@ -29,10 +29,10 @@ for i in range(l):
                             MCI = MCI +1
 
                         T = T +1
-                        newpath4 = newpath3 + '/' +  file
-                        last_path = des_path + type + '/' + file
-                        ds = pydicom.dcmread(newpath4)
-                        ds.save_as(last_path)
+                        dir_path4 = dir_path3 + '/' +  file
+                        final_path = des_path + type + '/' + file
+                        ds = pydicom.dcmread(dir_path4)
+                        ds.save_as(final_path)
 
     print(i+1,"/",l)
 
